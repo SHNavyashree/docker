@@ -27,6 +27,6 @@ ipipeline {
                 sh 'curl -f http://<your-vm-ip>/ || exit 1'
             }
         }
-    }
-}
+    
+
 
