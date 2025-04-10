@@ -15,9 +15,8 @@
         state: started
         enabled: true
 
-    - name: Pull app image from ACR
-      shell: docker login youracr.azurecr.io -u <ACR_USER> -p <ACR_PASS> && docker pull {{ image }}
+  
 
     - name: Run Docker container
-      shell: docker run -d -p 80:5000 {{ image }}
+      shell: docker run -d -p 80:5000 {{ amazon:1.0 }}
 
