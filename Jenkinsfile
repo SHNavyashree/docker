@@ -4,6 +4,7 @@ pipeline {
     environment {
         IMAGE_NAME = "amazon:1.0"
     }
+    stages{
 
     stage('Provision Azure Infrastructure') {
             steps {
@@ -27,6 +28,8 @@ pipeline {
                 sh 'curl -f http://<your-vm-ip>/ || exit 1'
             }
         }
+}
+
 }
     
 
