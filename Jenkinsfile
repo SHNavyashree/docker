@@ -1,7 +1,10 @@
 pipeline {
     agent any
 
-    environment {
+    environment { 
+
+        ENV = withEnv(['PATH+EXTRA=/usr/local/bin']) 
+
         IMAGE_NAME = "amazon:1.0"
     }
     stages{
