@@ -1,15 +1,12 @@
 pipeline {
     agent any
 
-    environment { 
-
-        
-
+    environment {
         IMAGE_NAME = "amazon:1.0"
     }
-    stages{
 
-    stage('Provision Azure Infrastructure') {
+    stages {
+        stage('Provision Azure Infrastructure') {
             steps {
                 dir('terraform') {
                     sh 'terraform init'
@@ -21,7 +18,7 @@ pipeline {
         stage('Deploy App using Ansible') {
             steps {
                 dir('ansible') {
-                    sh 'ansible-playbook -i hosts deploy.yml --extra-vars "image=$IMAGE_NAME"'
+                    sh 'ansible-playbook -i hosts deploy.yml --extra-vars "image=${IMAGE_NAME}"'
                 }
             }
         }
@@ -31,9 +28,5 @@ pipeline {
                 sh 'curl -f http://<your-vm-ip>/ || exit 1'
             }
         }
+    }
 }
-
-}
-    
-
-
